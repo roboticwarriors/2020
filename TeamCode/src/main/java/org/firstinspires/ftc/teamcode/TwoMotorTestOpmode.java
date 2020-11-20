@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -40,8 +41,8 @@ public class TwoMotorTestOpmode extends LinearOpMode {
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
-        leftDrive.setDirection(DcMotor.Direction.FORWARD);
-        rightDrive.setDirection(DcMotor.Direction.FORWARD);
+        leftDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightDrive.setDirection(DcMotor.Direction.REVERSE);
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
@@ -49,8 +50,34 @@ public class TwoMotorTestOpmode extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-           leftDrive.setPower(gamepad1.left_bumper ? 1 : 0);
-           rightDrive.setPower(gamepad2.right_bumper ? 1 : 0);
+
+            if (gamepad1.a){
+                leftDrive.setPower(1);
+                rightDrive.setPower(1);
+            } else {
+                leftDrive.setPower(0);
+                rightDrive.setPower(0);
+            }
+            if (gamepad1.b){
+                leftDrive.setPower(.25);
+                rightDrive.setPower(.25);
+            }
+            else {
+                leftDrive.setPower(0);
+                rightDrive.setPower(0);
+            }
+            if (gamepad1.x){
+                leftDrive.setPower(.75);
+                rightDrive.setPower(.75);
+            } else if (gamepad1.y){
+                leftDrive.setPower(.5);
+                rightDrive.setPower(.5);
+            }
+            else {
+                leftDrive.setPower(0);
+                rightDrive.setPower(0);
+            }
+            }
         }
     }
-}
+
