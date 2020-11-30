@@ -54,22 +54,16 @@ public class TwoMotorTestOpmode extends LinearOpMode {
             if (gamepad1.a){
                 leftDrive.setPower(1);
                 rightDrive.setPower(1);
-            } else {
-                leftDrive.setPower(0);
-                rightDrive.setPower(0);
             }
-            if (gamepad1.b){
+            else if (gamepad1.b){
                 leftDrive.setPower(.25);
                 rightDrive.setPower(.25);
             }
-            else {
-                leftDrive.setPower(0);
-                rightDrive.setPower(0);
-            }
-            if (gamepad1.x){
+            else if (gamepad1.x){
                 leftDrive.setPower(.75);
                 rightDrive.setPower(.75);
-            } else if (gamepad1.y){
+            }
+            else if (gamepad1.y){
                 leftDrive.setPower(.5);
                 rightDrive.setPower(.5);
             }
